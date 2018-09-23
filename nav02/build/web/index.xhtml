@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .marco {
+                margin: auto;
+                border: 1px solid #aaa;
+                padding: 20px;
+                background-color: #eee;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h3 style="text-align: center">
+            <h:outputText value="Solicitud de Datos"/>
+        </h3>
+
+        <h:form>
+            <h:panelGrid columns="3" class="marco">
+                <h:outputText value="Apellidos"/>
+                <h:inputText value="#{data.apellidos}" id="apellidos"
+                             required="true"
+                             requiredMessage="Ingrese apellidos"
+                             validatorMessage="De [3, 50] caracteres">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                <h:message for="apellidos" style="color: red"/>
+                <h:outputText value="Nombres"/>
+                <h:inputText value="#{data.nombres}" id="nombres"
+                             required="true"
+                             requiredMessage="Ingrese nombres"
+                             validatorMessage="De [3, 50] caracteres">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                <h:message for="nombres" style="color: red"/>
+                <h:outputText value="Sueldo"/>
+                <h:inputText value="#{data.sueldo}" id="sueldo"
+                             required="true"
+                             requiredMessage="Ingrese sueldo"
+                             validatorMessage="De [0, 10000]"
+                             converterMessage="ingrese valor">
+                    <f:convertNumber/>
+                    <f:validateDoubleRange minimum="0"
+                                           maximum="10000"/>
+                </h:inputText>
+                <h:message for="sueldo" style="color: red"/>
+            </h:panelGrid>
+            <p style="text-align: center">
+                <h:commandButton value="Enviar Datos"
+                                 action="#{data.navega()}"/>
+            </p>
+        </h:form>   
+
+
+
+    </h:body>
+</html>
+
