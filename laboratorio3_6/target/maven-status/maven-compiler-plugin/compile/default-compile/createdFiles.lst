@@ -1,0 +1,6 @@
+pe\edu\cibertec\listener\CicloListener.class
+pe\edu\cibertec\managed\ListadoBean.class
+pe\edu\cibertec\managed\ReporteBean.class
+pe\edu\cibertec\managed\LoginBean.class
+pe\edu\cibertec\managed\ClienteBean.class
+pe\edu\cibertec\bean\Cliente.class

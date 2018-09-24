@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid bodyrows="10" columns="2" >
+                <h:outputLabel value="Nombre:"/>
+                <h:outputText value="#{clienteBean.cliente.nombre}"/>
+                <h:outputLabel value="Apellido:"/>
+                <h:outputText value="#{clienteBean.cliente.apellido}"/>
+                <h:outputLabel value="Genero"/>
+                <h:selectOneRadio value="#{clienteBean.cliente.genero}" disabled="true">
+                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                    <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                </h:selectOneRadio>
+                <h:outputLabel value="Profesion"/>
+                <h:selectOneListbox value="#{clienteBean.cliente.profesion}" size="1"  disabled="true">
+                    <f:selectItem itemValue="001" itemLabel="Arquitecto"/>
+                    <f:selectItem itemValue="002" itemLabel="Ingeniero"/>
+                </h:selectOneListbox>                
+                <h:outputLabel value="Numero Movil"/>
+                <h:outputText value="#{clienteBean.cliente.numeroMovil}"/>
+                <h:outputLabel value="Desea recibir publicidad?"/>
+                <h:selectBooleanCheckbox value="#{clienteBean.cliente.publicidad}" disabled="true"/>
+                <h:outputLabel value="Correo Electrónico"/>
+                <h:outputText value="#{clienteBean.cliente.correoElectronico}"/>
+                <h:outputLabel value="DNI"/>
+                <h:outputText value="#{clienteBean.cliente.numeroDocumento}"/>
+                <h:outputLabel value="Cantidad Hijos"/>
+                <h:outputText value="#{clienteBean.cliente.cantidadHijos}"/>
+            </h:panelGrid>
+        </h:form>
+            
+       
+    </h:body>
+</html>
+
