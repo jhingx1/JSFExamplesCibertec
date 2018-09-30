@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel {
+                font-size:.62em
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:panel header="PrimeFaces - radios" footer="parainformaticos.com"
+                 style="margin:auto;width:520px">
+            <h:form style="margin-top: 20px">
+                <h:panelGrid columns="2" style="margin:auto">
+                    <h:outputText value="Gaseosa:"
+                                  style="font-weight: bold"/>
+                    <h:selectOneRadio value="#{data.idgaseosa}">
+                        <f:selectItems value="#{data.list}" var="g"
+                                       itemValue="#{g.idgaseosa}"
+                                       itemLabel="#{g.gaseosa}"/>
+                    </h:selectOneRadio>
+                </h:panelGrid>
+                <p style="text-align: center">
+                    <p:commandButton value="Enviar Dato" action="result1"
+                                     type="submit" ajax="false"/><br/><br/>
+                    <p:commandLink value="Volver" action="index"
+                                   ajax="false"/><br/><br/>
+                </p>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
