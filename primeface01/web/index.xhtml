@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel { font-size:0.70em }
+        </style>
+    </h:head>
+    <h:body>
+        <p:panel header="PrimeFaces - Themes" footer="parainformaticos.com"
+                 style="margin:auto;width:380px">
+            <h:form>
+                <h:panelGrid columns="3" style="margin:auto">
+                    <h:outputText value="Su nombre"/>
+                    <p:inputText value="#{data.nombre}" id="nombre"
+                                 required="true"
+                                 requiredMessage="Ingrese nombre"
+                                 validatorMessage="de [3, 50] caracteres">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </p:inputText>
+                    <p:message for="nombre"/>
+                </h:panelGrid>
+                <p style="text-align: center">
+                    <p:commandButton value="Enviar Dato" action="result"
+                                     type="submit" ajax="false"/>
+                </p>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
