@@ -17,7 +17,9 @@
                 <h:inputText binding="#{valor1}" value="#{data.valor1}"
                              id="valor1" required="true"
                              requiredMessage="ingrese valor 1">
-                    <f:validator validatorId="vpar" /><!-- El validador-->
+                    <f:validator validatorId="vpar" />
+                    <!-- El validador para el valor1 enlazado con el valor2-->
+                    <!-- Asociar el evento blur.-->
                     <f:ajax event="blur" render="valor2" />
                 </h:inputText>
                 <h:message for="valor1" style="color: red"/>
