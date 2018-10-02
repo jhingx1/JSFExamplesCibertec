@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p style="text-align: center">
+            El valor 1 esta enlazado (binding) al valor 2<br/>
+            para ingresar valor 2, valor 1 debe ser PAR
+        </p>
+        <h:form>
+            <h:panelGrid columns="3" style="margin: auto">
+                <h:outputText value="Valor 1"/>
+                <h:inputText binding="#{valor1}" value="#{data.valor1}"
+                             id="valor1" required="true"
+                             requiredMessage="ingrese valor 1">
+                    <f:validator validatorId="vpar" /><!-- El validador-->
+                    <f:ajax event="blur" render="valor2" />
+                </h:inputText>
+                <h:message for="valor1" style="color: red"/>
+                <h:outputText value="Valor 2"/>
+                <h:inputText value="#{data.valor2}" id="valor2"
+                             readonly="#{!valor1.valid}" required="true"
+                             style="background-color: #{!valor1.valid ? 'red' : 'white'}"
+                             requiredMessage="ingrese valor 2"
+                             converterMessage="ingrese valor">
+                    <f:convertNumber/>
+                </h:inputText>
+                <h:message for="valor2" style="color: red"/>
+            </h:panelGrid>
+            <p style="text-align: center">
+                <h:commandButton value="Enviar Datos" action="/result"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>
