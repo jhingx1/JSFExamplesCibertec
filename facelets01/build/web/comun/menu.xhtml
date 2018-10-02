@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <ui:composition>
+            <h:form>
+                <h:panelGrid columns="3" style="margin-bottom: 10px">
+                    <h:commandLink value="Ver Clientes Nuevos"
+                                   actionListener="#{reporte.confirmarAccion}" 
+                                   action="#{reporte.consultar}">
+                        <f:attribute name="tipo" value="nuevo"/>
+                        <f:attribute name="titulo" value="Clientes Nuevos"/>
+                    </h:commandLink>
+                    
+                    <h:commandLink value="Ver Clientes Top"
+                                   actionListener="#{reporte.confirmarAccion}" 
+                                   action="#{reporte.consultar}">
+                        <f:attribute name="tipo" value="top"/>
+                        <f:attribute name="titulo" value="Clientes Top"/>
+                    </h:commandLink>
+
+                    <h:commandLink value="Ver Todos los Clientes "
+                                   actionListener="#{reporte.confirmarAccion}" 
+                                   action="#{reporte.consultar}">
+                        <f:attribute name="tipo" value="todos"/>
+                        <f:attribute name="titulo" value="Todos los Clientes"/>
+                    </h:commandLink>
+                </h:panelGrid>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

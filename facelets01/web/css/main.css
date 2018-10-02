@@ -1,0 +1,43 @@
+body {
+    background-color: #013042;
+}
+
+#contenedor {
+    background-color: white;
+    width: 800px;
+    margin: auto;
+}
+
+#cabecera {
+    border-bottom: 1px dotted #013042;
+}
+
+#menu {
+    float: left;
+    width: 800px;
+    border-right: 1px dotted #013042;
+    border-bottom: 1px dotted #013042;
+    padding-left: 10px;
+    margin-bottom: 5px;    
+    /*border: 10px;*/
+}
+
+#contenido {
+    /*float: right;*/
+    width: 630px;
+    border: 10px;
+}
+
+#pie {
+    clear: both;
+    border-top: 1px dotted #013042;
+}
+
+h3{
+    
+}
+
+table{
+    padding-left: 10px;
+    border: 10px;
+}
