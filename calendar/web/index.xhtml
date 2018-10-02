@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-datepicker {
+                font-size:0.80em
+            }
+        </style>
+        <script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>
+    </h:head>
+    <h:body>
+        <p:panel header="Calendar"
+                 style="margin:auto;width:300px;font-size:0.80em">
+            <h:form>
+                <h3>Inline</h3>
+                <p:calendar value="#{mbcalendar.date1}" locale="es"
+                            mode="inline" pattern="dd/MM/yyyy"/>
+                <h3>Popup</h3>
+                <p:calendar value="#{mbcalendar.date2}" locale="es" />
+                <h3>Popup Button</h3>
+                <p:calendar value="#{mbcalendar.date3}" locale="es"
+                            showOn="button" pattern="dd/MM/yyyy"/>
+                <p style="text-align: right">
+                    <h:commandButton value="Enviar Datos"
+                                     action="#{mbcalendar.navega()}"/>
+                </p>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>

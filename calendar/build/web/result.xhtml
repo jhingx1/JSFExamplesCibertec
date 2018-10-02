@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2" cellpadding="5" style="margin: auto">
+            <h:outputText value="Fecha 1:" />
+            <h:outputText value="#{mbcalendar.date1}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+            <h:outputText value="Fecha 2:" />
+            <h:outputText value="#{mbcalendar.date2}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+            <h:outputText value="Fecha 3: " />
+            <h:outputText value="#{mbcalendar.date3}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+        </h:panelGrid>
+    </h:body>
+</html>
