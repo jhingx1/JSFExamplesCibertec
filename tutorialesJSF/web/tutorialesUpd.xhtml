@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>parainformaticos.com</title>
+        <h:outputStylesheet name="jq/jquery-ui.min.css"/>
+        <h:outputStylesheet name="css/main.css"/>
+        <h:outputStylesheet name="parainfo/a.css"/>
+        <h:outputStylesheet name="parainfo/form.css"/>
+        <h:outputStylesheet name="parainfo/message.css"/>
+
+        <h:outputScript name="jq/jquery-3.3.1.min.js"/>
+        <h:outputScript name="jq/jquery-ui.min.js"/>
+        <h:outputScript name="parainfo/form.js"/>
+        <h:outputScript name="parainfo/message.js"/>
+        
+        <h:outputScript name="js/tutoriales.js"/>
+    </h:head>
+    <h:body>
+        <h:form class="parainfo" style="margin: auto;display: table">
+            <h:inputHidden value="#{mbTutoriales.tutoriales.idtutorial}"/>
+            <fieldset>
+                <legend>Actualizar Tutorial</legend>
+
+                <h:panelGrid columns="2" style="margin: auto">
+                    <h:outputLabel for="titulo" value="Titulo" />
+                    <h:inputText value="#{mbTutoriales.tutoriales.titulo}"
+                                 id="titulo" style="width: 300px" required="true"
+                                 requiredMessage="* Ingrese Titulo de Tutorial"
+                                 validatorMessage="* Entre [3, 200] caracteres">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="tipo" value="Tipo" />  
+                    <h:selectOneMenu id="tipo"  style="width: 310px"
+                                     value="#{mbTutoriales.tutoriales.tipo}">
+                        <f:selectItem itemValue="Separata" itemLabel="Separata"/>
+                        <f:selectItem itemValue="Video" itemLabel="Video"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="precio" value="Precio" />  
+                    <h:inputText id="precio"  style="width: 150px;text-align: right"
+                                 value="#{mbTutoriales.tutoriales.precio}" 
+                                 required="true" requiredMessage="* Ingrese precio"
+                                 converterMessage="* Precio debe ser valor"
+                                 validatorMessage="* Precio entre ]0, 100]">
+                        <f:convertNumber/>
+                        <f:validateDoubleRange minimum="0.01" maximum="100"/>
+                    </h:inputText>
+                </h:panelGrid>
+
+                <p style="text-align: center">
+                    <h:commandButton action="#{mbTutoriales.tutorialesUpd()}"
+                                     value="Grabar Datos" type="submit"/> 
+                </p>
+
+                <p style="text-align: center">
+                    <h:commandLink action="/index" value="Cancelar"
+                                   immediate="true" class="parainfo"/>
+                </p>
+            </fieldset>
+
+            <!-- para errores de validación  -->
+            <div class="msg_error_valida">
+                <h:message for="titulo"/><br/>
+                <h:message for="precio"/>
+            </div>
+        </h:form>
+
+        <!-- mensajes del servidor -->
+        <h:outputText value="#{mbTutoriales.message}" 
+                      class="msg_error ui-state-highlight ui-corner-all"/>
+    </h:body>
+</html>
+
