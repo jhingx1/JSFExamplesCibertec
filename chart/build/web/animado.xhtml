@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel header="Charts - Línea"
+                 style="margin:auto;width:900px;font-size:0.62em;text-align:center">
+            <h:panelGrid columns="2" style="margin: auto">
+                <p:lineChart value="#{lineChartBean.linearModel}" legendPosition="e"
+                             zoom="true" animate="true" title="Linear Chart"
+                             minY="0" maxY="10" style="width:400px;" widgetVar="chart"/>
+                <p:barChart id="basic" value="#{lineChartBean.categoryModel}"
+                            legendPosition="ne" title="Basic Bar Chart"
+                            min="0" max="200" style="width:400px" animate="true"/>
+            </h:panelGrid>
+            <h:form style="text-align:center;margin: 10px;">
+                <h:commandLink value="Volver" action="/index"/>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
