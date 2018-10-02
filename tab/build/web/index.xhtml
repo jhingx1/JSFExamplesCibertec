@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body >
+        <p:tabView style="margin:auto;width:600px;font-size:0.8em;text-align: justify">
+            <p:tab title="Machu Picchu">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage value="/images/machupicchu.jpg"/>
+                    <h:outputText value="Machu Picchu (del quechua sureño machu
+                                  pikchu, 'Montaña Vieja') es el nombre contemporáneo
+                                  que se da a una llaqta (antiguo poblado andino inca)
+                                  de piedra construida principalmente a mediados del siglo
+                                  XV en el promontorio rocoso que une las montañas Machu
+                                  Picchu y Huayna Picchu en la vertiente oriental de los
+                                  Andes Centrales, al sur del Perú. Su nombre original
+                                  habría sido Picchu o Picho."/>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Chan Chan">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage value="/images/chanchan.jpg" />
+                    <h:outputText value="Es una ciudad precolombina de adobe, construida
+                                  en la costa norte del Perú por los chimú. Es la ciudad
+                                  construida en adobe más grande de América Latina1 y la
+                                  segunda en el mundo. Se ubica al noroeste del Área Metropolitana
+                                  de Trujillo entre los distritos de Trujillo y Huanchaco.
+                                  Fue declarada como Patrimonio de la Humanidad por la Unesco en 1986."/>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Parque Nacional Huascaran">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage value="/images/huascaran.jpg" />
+                    <h:outputText value="El Parque Nacional Huascarán se encuentra ubicado en el departamento
+                                  de Ancash. Con una superficie de 340.000 hectáreas y declarado Patrimonio de la
+                                  Humanidad por la UNESCO en el año 1985, este parque alberga uno de
+                                  los ecosistemas de montaña más extraordinarios en el mundo. Contiene
+                                  un total de 663 glaciares, 269 lagos y 41 ríos, así como cientos de
+                                  picos de montañas, 26 de los cuales arriba de los 6.000 metros de
+                                  altura."/>
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+    </h:body>
+</html>
