@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>parainformaticos</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size:0.75em;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:panel header="El Noticiero - Datos de Nueva Noticia" footer="parainformaticos.com"
+                 style="margin:auto;width:500px">
+            <h:form style="margin-top: 20px">
+                <h:panelGrid columns="1" style="margin: auto;width: 100%" cellspacing="10">
+
+                    <p:panel header="Título de Noticia">
+                        <p:inputText value="#{mbnoticia.titulo}" id="titulo"
+                                     required="true" style="width: 97%"
+                                     requiredMessage="Ingrese Título de Noticia."
+                                     validatorMessage="Entre [3, 200] caracteres">
+                            <f:validateLength minimum="3" maximum="200"/>
+                        </p:inputText>
+                    </p:panel>
+
+                    <p:panel header="Categoría y Contenido de Noticia">
+                        <h:panelGrid columns="1" style="width: 100%">
+                            <p:selectOneMenu value="#{mbnoticia.idcategoria}" id="idcategoria" 
+                                             style="width: 100%"
+                                             validatorMessage="seleccione categoría">
+                                <f:validateLongRange minimum="1"/>
+                                <f:selectItem itemValue="0" itemLabel="-- Seleccione categoría de noticia --"/>
+                                <f:selectItems value="#{mbnoticia.listcategorias}"/>
+                            </p:selectOneMenu>
+
+                            <p:inputTextarea value="#{mbnoticia.noticia}" id="noticia"
+                                             required="true" 
+                                             style="width: 97%;height: 50px"
+                                             requiredMessage="Ingrese Noticia."/>
+
+                        </h:panelGrid>
+                    </p:panel>
+
+                    <p:panel header="Fecha y Departamento de Origen">
+                        <h:panelGrid columns="2">
+                            <p:calendar value="#{mbnoticia.fecha}" showOn="button" id="fecha"
+                                        locale="es" readonlyInput="true"
+                                        effect="slideDown" widgetVar="fecha"
+                                        mindate="01/01/2010" maxdate="31/12/2015"
+                                        navigator="true" pattern="dd/MM/yyyy"
+                                        required="true" requiredMessage="seleccione Fecha"/>
+
+                            <p:selectOneMenu value="#{mbnoticia.iddepartamento}" id="iddepartamento" 
+                                             style="margin-left: 20px;width: 190px"
+                                             validatorMessage="Seleccione Departamento">
+                                <f:validateLongRange minimum="1"/>
+                                <f:selectItem itemValue="0" itemLabel="-- seleccione --"/>
+                                <f:selectItems value="#{mbnoticia.listdepartemento}"/>
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+
+
+                    </p:panel>
+
+                    <p:panel header="Seleccionar Periódistas responsables">
+                        <p:selectManyMenu value="#{mbnoticia.idperiodista}" id="idperiodista" 
+                                          style="width: 100%" scrollHeight="120"
+                                          required="true" requiredMessage="Seleccione Periódistas">
+                            <f:selectItems value="#{mbnoticia.listperiodistas}"/>
+                        </p:selectManyMenu>
+                    </p:panel>
+
+                </h:panelGrid>    
+
+                <!-- Mensajes de error-->
+                <p style="text-align: center">
+                    <p:message for="titulo"/>
+                    <p:message for="noticia"/>
+                    <p:message for="idcategoria"/>
+                    <p:message for="fecha"/>
+                    <p:message for="iddepartamento"/>
+                    <p:message for="idperiodista"/>
+                </p>
+
+                <div style="text-align: center;margin: 20px">
+                    <p:commandButton 
+                        value="Grabar Datos de Noticia" ajax="false" type="submit"
+                        action="#{mbnoticia.insert()}" 
+                        image="ui-icon ui-icon-disk" 
+                        style="margin-right: 20px"/>
+
+                </div>
+
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
