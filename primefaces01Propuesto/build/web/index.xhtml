@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Ajax con Combo"
+                     style="margin:auto;width:200px;font-size:0.80em">
+                <p:selectOneMenu id="city" value="#{mbempleado.id}"
+                                 style="width: 100%; margin: 15px 5px">
+                    <f:selectItem itemValue="0" itemLabel="-- Seleccione --"/>
+                    <f:selectItem itemValue="1" itemLabel="Juan Pérez"/>
+                    <f:selectItem itemValue="2" itemLabel="Ana Gutiérrez"/>
+                    <f:selectItem itemValue="3" itemLabel="Jorge Risco"/>
+                    <f:selectItem itemValue="4" itemLabel="Katya Rodrígues"/>
+                    <p:ajax update="display " listener="#{mbempleado.change}" />
+                    <!-- para actualizar
+                    <p:ajax update="display " listener="#{mbempleado.change}" />
+                    -->
+                </p:selectOneMenu>
+                <h:panelGrid id="display" columns="2" style="margin-top: 30px">
+                    <h:outputText value="ID: " />
+                    <h:outputText value="#{mbempleado.id}" style="font-weight:bold"/>
+                    <h:outputText value="Nombre: " />
+                    <h:outputText value="#{mbempleado.nombre}" style="font-weight:bold"/>
+                    <h:outputText value="Correo: " />
+                    <h:outputText value="#{mbempleado.correo}" style="font-weight:bold"/>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
