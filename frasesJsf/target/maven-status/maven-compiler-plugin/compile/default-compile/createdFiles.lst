@@ -1,0 +1,10 @@
+dao\impl\DaoFrasesImpl.class
+parainfo\convert\DeString.class
+dao\DaoFrases.class
+dto\Autores.class
+web\managedbean\ManagedBeanFrases.class
+dao\impl\DaoAutoresImpl.class
+parainfo\sql\ConectaDb.class
+web\managedbean\ManagedBeanAutores.class
+dao\DaoAutores.class
+dto\Frases.class
