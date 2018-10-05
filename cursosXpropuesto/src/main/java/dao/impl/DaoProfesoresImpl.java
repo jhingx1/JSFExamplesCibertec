@@ -74,7 +74,8 @@ public class DaoProfesoresImpl implements DaoProfesores {
 
             ps.setString(1, profesores.getNombreprofesores());
             ps.setString(2, profesores.getCarrera());
-            ps.setDate(3, profesores.getFechaingreso());
+            //ps.setDate(3, profesores.getFechaingreso());
+            ps.setDate(3, new java.sql.Date(profesores.getFechaingreso().getTime()));            
             ps.setString(4, profesores.getTipocontrato());
 
             int ctos = ps.executeUpdate();
@@ -91,7 +92,10 @@ public class DaoProfesoresImpl implements DaoProfesores {
 
     @Override
     public String profesoresDel(List<Integer> ids) {
-        sql.append("DELETE FROM profesores WHERE idprofesores=?");
+        //sql.append("DELETE FROM profesores WHERE idprofesores=?");
+        
+        sql.delete(0, sql.length())
+                .append("DELETE FROM profesores WHERE idprofesores=?");
 
         try (Connection cn = db.getConnection();
                 PreparedStatement ps = 
@@ -129,14 +133,8 @@ public class DaoProfesoresImpl implements DaoProfesores {
     @Override
     public Profesores profesoresGet(Integer idprofesores) {
         Profesores profesores = null;
-        sql.append("SELECT ")
-                .append("idprofesores,")
-                .append("nombreprofesores,")
-                .append("carrera,")
-                .append("fechaingreso,")
-                .append("tipocontrato ")
-                .append("FROM profesores ")
-                .append("WHERE idprofesores=?");
+        
+        sql.append("SELECT idprofesores,nombreprofesores,carrera,fechaingreso,tipocontrato FROM profesores WHERE idprofesores=?;");
 
         try (Connection cn = db.getConnection();
                 PreparedStatement ps = 
@@ -182,7 +180,8 @@ public class DaoProfesoresImpl implements DaoProfesores {
 
             ps.setString(1, profesores.getNombreprofesores());
             ps.setString(2, profesores.getCarrera());
-            ps.setDate(3, profesores.getFechaingreso());
+            //ps.setDate(3, profesores.getFechaingreso());
+            ps.setDate(3, new java.sql.Date(profesores.getFechaingreso().getTime()));
             ps.setString(4,profesores.getTipocontrato());
             ps.setInt(5, profesores.getIdprofesores());
 

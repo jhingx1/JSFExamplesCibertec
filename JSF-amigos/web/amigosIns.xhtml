@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>parainformaticos.com</title>
+        <h:outputStylesheet name="jq/jquery-ui.min.css"/>
+        <h:outputStylesheet name="css/main.css"/>
+        <h:outputStylesheet name="parainfo/a.css"/>
+        <h:outputStylesheet name="parainfo/form.css"/>
+        <h:outputStylesheet name="parainfo/message.css"/>
+
+        <h:outputScript name="jq/jquery-3.3.1.min.js"/>
+        <h:outputScript name="jq/jquery-ui.min.js"/>
+        <h:outputScript name="parainfo/form.js"/>
+        <h:outputScript name="parainfo/message.js"/>
+
+        <h:outputScript name="js/tutoriales.js"/>
+    </h:head>
+    <h:body>
+        <h:form class="parainfo" style="margin: auto;display: table">
+            <fieldset>
+                <legend>Nuevo Amigo</legend>
+
+                <h:panelGrid columns="2" style="margin: auto">
+                    <h:outputLabel for="nombre" value="Nombre" />
+                    <h:inputText value="#{mbAmigos.amigos.nombre}"
+                                 id="nombre" style="width: 300px">                      
+                    </h:inputText>
+                    
+                    <h:outputLabel for="correo" value="Correo" />
+                    <h:inputText value="#{mbAmigos.amigos.correo}"
+                                 id="correo" style="width: 300px">                      
+                    </h:inputText>
+                    
+                    <h:outputLabel for="telefono" value="Telefono" />
+                    <h:inputText value="#{mbAmigos.amigos.telefono}"
+                                 id="telefono" style="width: 300px">                      
+                    </h:inputText>
+                    
+                    <h:outputLabel for="direccion" value="Direccion" />
+                    <h:inputText value="#{mbAmigos.amigos.direccion}"
+                                 id="direccion" style="width: 300px">                      
+                    </h:inputText>
+                    
+                    <h:outputLabel for="nacimiento" value="Nacimiento" />                    
+                    <p:calendar value="#{mbAmigos.amigos.nacimiento}" locale="es"
+                                showOn="button" pattern="dd/MM/yyyy">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />        
+                    </p:calendar>
+
+                </h:panelGrid>
+
+                <p style="text-align: center">
+                    <h:commandButton action="#{mbAmigos.amigosIns()}"
+                                     value="Grabar Datos" type="submit"/> 
+                </p>
+
+                <p style="text-align: center">
+                    <h:commandLink action="/index" value="Cancelar"
+                                   immediate="true" class="parainfo"/>
+                </p>
+            </fieldset>
+
+            <!-- para errores de validación  -->
+            <div class="msg_error_valida">
+                <h:message for="titulo"/><br/>
+                <h:message for="precio"/>
+            </div>
+        </h:form>
+
+        <!-- mensajes del servidor -->
+        <h:outputText value="#{mbAmigos.message}" 
+                      class="msg_error ui-state-highlight ui-corner-all"/>
+    </h:body>
+</html>
+

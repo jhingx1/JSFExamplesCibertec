@@ -50,11 +50,11 @@
                         <td>#{a.fechaingreso}</td>
                         <td colspan="2">#{a.tipocontrato}</td>
                         <th>
-                            <input type="checkbox" name="idautor_del" 
+                            <input type="checkbox" name="idprofesores_del" 
                                    value="#{a.idprofesores}"/>
                         </th>
                         <th>
-                            <input type="radio" name="idautor_upd" 
+                            <input type="radio" name="idprofesores_upd" 
                                    value="#{a.idprofesores}"/>
                         </th>
                     </tr>
@@ -86,7 +86,7 @@
 
         <!-- actualizar autor -->
         <h:form id="form_get">
-            <h:inputHidden id="idautor" 
+            <h:inputHidden id="idprofesores" 
                            value="#{mbProfesores.profesores.idprofesores}"/>
             <h:commandButton 
                 id="profesoresGet" style="display: none;" type="submit"

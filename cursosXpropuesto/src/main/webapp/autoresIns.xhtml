@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>parainformaticos.com</title>
@@ -18,26 +19,41 @@
         <h:outputScript name="jq/jquery-ui.min.js"/>
         <h:outputScript name="parainfo/form.js"/>
         <h:outputScript name="parainfo/message.js"/>
-        
+
         <h:outputScript name="js/autores.js"/>
     </h:head>
     <h:body>
         <h:form class="parainfo" style="margin: auto;display: table">
             <fieldset>
-                <legend>Nuevo Autor</legend>
+                <legend>Nuevo Profesores</legend>
 
                 <h:panelGrid columns="2" class="tabla">
-                    <h:outputLabel for="autor" value="Autor" />
-                    <h:inputText value="#{mbAutores.autores.autor}"
-                                 id="autor" style="width: 300px" required="true"
-                                 requiredMessage="* Ingrese Autor"
-                                 validatorMessage="* Entre [3, 200] caracteres">
-                        <f:validateLength minimum="3" maximum="100"/>
+
+                    <h:outputLabel for="profesor" value="Profesor" />
+                    <h:inputText value="#{mbProfesores.profesores.nombreprofesores}"
+                                 id="profesor" style="width: 300px">
                     </h:inputText>
+                    
+                    <h:outputLabel for="carrera" value="Carrera" />
+                    <h:inputText value="#{mbProfesores.profesores.carrera}"
+                                 id="carrera" style="width: 300px">
+                    </h:inputText>
+                    
+                    <h:outputLabel for="fecha" value="Fecha Ing." style="padding:2px;"/>                    
+                    <p:calendar value="#{mbProfesores.profesores.fechaingreso}" locale="es"
+                                showOn="button" pattern="dd/MM/yyyy" id="inicio">
+                        <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+1"/>        
+                    </p:calendar>
+                    
+                    <h:outputLabel for="tipocontrato" value="Tip. Contrato" />
+                    <h:inputText value="#{mbProfesores.profesores.tipocontrato}"
+                                 id="tipocontrato" style="width: 300px">
+                    </h:inputText>
+                    
                 </h:panelGrid>
 
                 <p style="text-align: center">
-                    <h:commandButton action="#{mbAutores.autoresIns()}"
+                    <h:commandButton action="#{mbProfesores.profesoresIns()}"
                                      value="Grabar Datos" type="submit"/> 
                 </p>
                 <p style="text-align: center">

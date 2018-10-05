@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>parainformaticos.com</title>
+        <h:outputStylesheet name="jq/jquery-ui.min.css"/>
+        <h:outputStylesheet name="css/main.css"/>
+        <h:outputStylesheet name="parainfo/a.css"/>
+        <h:outputStylesheet name="parainfo/form.css"/>
+        <h:outputStylesheet name="parainfo/message.css"/>
+
+        <h:outputScript name="jq/jquery-3.3.1.min.js"/>
+        <h:outputScript name="jq/jquery-ui.min.js"/>
+        <h:outputScript name="parainfo/form.js"/>
+        <h:outputScript name="parainfo/message.js"/>
+        
+        <h:outputScript name="js/tutoriales.js"/>
+    </h:head>
+    <h:body>
+        <h:form class="parainfo" style="margin: auto;display: table">
+            <h:inputHidden value="#{mbCursos.cursos.idcurso}"/>
+            <fieldset>
+                <legend>Actualizar Tutorial</legend>
+
+                <h:panelGrid columns="2" style="margin: auto">
+                    <h:outputLabel for="titulo" value="Titulo" />
+                    <h:inputText value="#{mbCursos.cursos.titulo}"
+                                 id="titulo" style="width: 300px" required="true"
+                                 requiredMessage="* Ingrese Titulo de Tutorial"
+                                 validatorMessage="* Entre [3, 200] caracteres">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+                    
+                    <h:outputLabel for="horas" value="Horas" />
+                    <h:inputText value="#{mbCursos.cursos.horas}"
+                                 id="horas" style="width: 300px" required="true"
+                                 requiredMessage="* Ingrese Titulo de Tutorial">
+                        <!-- <f:validateLength minimum="3" maximum="50"/>  -->
+                    </h:inputText>
+                    
+                    <h:outputLabel for="horario" value="Horario" />  
+                    <h:inputText id="horario"  style="width: 150px;text-align: right"
+                                 value="#{mbCursos.cursos.horario}" 
+                                 required="true" requiredMessage="* Ingrese precio"
+                                 converterMessage="* Precio debe ser valor">
+                        <!-- <f:convertNumber/>
+                        <f:validateDoubleRange minimum="0.01" maximum="100"/> -->
+                    </h:inputText>
+                    <h:outputLabel for="fechainicio" value="Fecha Inicio" />                    
+                    <p:calendar value="#{mbCursos.cursos.fechainicio}" locale="es"
+                                showOn="button" pattern="dd/MM/yyyy">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />        
+                    </p:calendar>
+                </h:panelGrid>
+
+                <p style="text-align: center">
+                    <h:commandButton action="#{mbCursos.cursosUpd()}"
+                                     value="Grabar Datos" type="submit"/> 
+                </p>
+
+                <p style="text-align: center">
+                    <h:commandLink action="/index" value="Cancelar"
+                                   immediate="true" class="parainfo"/>
+                </p>
+            </fieldset>
+
+            <!-- para errores de validación  -->
+            <div class="msg_error_valida">
+                <h:message for="titulo"/><br/>
+                <h:message for="precio"/>
+            </div>
+        </h:form>
+
+        <!-- mensajes del servidor -->
+        <h:outputText value="#{mbCursos.message}" 
+                      class="msg_error ui-state-highlight ui-corner-all"/>
+    </h:body>
+</html>
+

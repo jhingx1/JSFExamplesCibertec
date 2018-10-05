@@ -4,14 +4,14 @@ $(function () {
     }
 });
 
-function autoresIns() {
+function profesoresIns() {
     window.location = "faces/autoresIns.xhtml";
 }
 
-function autoresDel() {
+function profesoresDel() {
     var ids = [];
 
-    $("input[name='idautor_del']:checked").each(function () {
+    $("input[name='idprofesores_del']:checked").each(function () {
         ids.push($(this).val());
     });
 
@@ -30,21 +30,21 @@ function autoresDel() {
                 "Si": function () {
                     $(this).dialog("close");
                     $("#form_del\\:ids").val(ids.toString());
-                    $("#form_del\\:autoresDel").click();
+                    $("#form_del\\:profesoresDel").click();
                 }
             }
         });
     }
 }
 
-function autoresUpd() {
-    var id = $("input[name='idautor_upd']:checked").val();
+function profesoresUpd() {
+    var id = $("input[name='idprofesores_upd']:checked").val();
 
     if (isNaN(id)) {
         message("Advertencia", "Seleccione Fila para Actualizar Datos");
     } else {
-        $("#form_get\\:idautor").val(id);
-        $("#form_get\\:autoresGet").click();
+        $("#form_get\\:idprofesores").val(id);
+        $("#form_get\\:profesoresGet").click();
     }
 }
 

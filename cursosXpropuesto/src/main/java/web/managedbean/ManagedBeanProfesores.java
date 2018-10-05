@@ -57,9 +57,9 @@ public class ManagedBeanProfesores {
         message = daoProfesores.profesoresIns(profesores);
 
         if (message == null) {
-            return "/profesoresQry?faces-redirect=true";
+            return "/autoresQry?faces-redirect=true";
         } else {
-            return "/profesoresIns";
+            return "/autoresIns";
         }
     }
 
@@ -72,7 +72,7 @@ public class ManagedBeanProfesores {
             message = "IDs Incorrectos o no envíados";
         }
 
-        return "/profesoresQry";
+        return "/autoresQry";
     }
 
     public String profesoresGet() {
