@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>parainformaticos.com</title>
+        <h:outputStylesheet name="jq/jquery-ui.min.css"/>
+        <h:outputStylesheet name="css/main.css"/>
+        <h:outputStylesheet name="parainfo/table.css"/>
+        <h:outputStylesheet name="parainfo/message.css"/>
+
+        <h:outputScript name="jq/jquery-3.3.1.min.js"/>
+        <h:outputScript name="jq/jquery-ui.min.js"/>
+        <h:outputScript name="parainfo/table.js"/>
+        <h:outputScript name="parainfo/message.js"/>
+
+        <!-- <h:outputScript name="js/cursos.js"/> -->
+        <h:outputScript name="js/tutoriales.js"/>
+    </h:head>
+    <h:body>
+        <h:dataTable class="parainfo" value="#{mbCursos.list}" var="cur" 
+                     style="width: 500px;margin: auto" id="dt" 
+                     columnClasses=",right">
+
+            <h:column headerClass="crud2 left">
+                <f:facet name="header">
+                    <a href="#" onclick="cursosIns();" 
+                       title="Nuevo Registro">
+                        <span 
+                            style="display: inline-block;vertical-align: bottom" 
+                            class="ui-icon ui-icon-plusthick"></span></a>
+
+                    <a href="#" onclick="cursosIns();" 
+                       title="Nuevo Registro">
+                        <span style="margin-left: 6px">Curso</span></a>
+                </f:facet>
+                <h:outputText value="#{cur.titulo}"/>
+            </h:column>
+
+            <h:column headerClass="left">
+                <f:facet name="header">Horas</f:facet>
+                <h:outputFormat value="#{cur.horas}">
+                    <f:convertNumber pattern="#,###,##0.00" locale="sp_PE"/>
+                </h:outputFormat>
+            </h:column>
+
+            <h:column headerClass="left">
+                <f:facet name="header">Horario</f:facet>
+                <h:outputText value="#{cur.horario}"/>
+            </h:column>
+            
+            <h:column headerClass="left">
+                <f:facet name="header">Fecha</f:facet>
+                <h:outputText value="#{cur.fechainicio}"/>
+            </h:column>
+
+            <h:column headerClass="crud">
+                <f:facet name="header">
+                    <a class="del" href="#" onclick="cursosDel();" 
+                       title="Retirar Registros"><span></span></a>
+                </f:facet>
+                <input type="checkbox" name="idcurso_del" 
+                       value="#{cur.idcurso}"/>
+            </h:column>
+
+            <h:column headerClass="crud">
+                <f:facet name="header">
+                    <a class="upd" href="#" onclick="cursosUpd();"
+                       title="Actualizar Registro"><span></span></a>
+                </f:facet>
+                <input type="radio" name="idcurso_upd" 
+                       value="#{cur.idcurso}"/>
+            </h:column>
+        </h:dataTable>
+
+        <!-- mensajes del servidor -->
+        <h:outputText value="#{mbCursos.message}" 
+                      class="msg_error ui-state-highlight ui-corner-all"/>
+
+        <!-- mensajes lado del cliente -->
+        <div style="display: none">
+            <div id="dlg_message"><p id="message"></p></div>
+        </div>
+
+        <!-- retirar cursos -->
+        <h:form id="form_del">
+            <h:inputHidden id="ids" value="#{mbCursos.ids}"/>
+            <h:commandButton 
+                id="cursosDel" style="display: none;" type="submit"
+                actionListener="#{mbCursos.cursosDel()}"/>
+        </h:form>
+
+        <!-- actualizar curso -->
+        <h:form id="form_get">
+            <h:inputHidden id="idcurso" 
+                           value="#{mbCursos.cursos.idcurso}"/>
+            <h:commandButton 
+                id="cursosGet" style="display: none;" type="submit"
+                action="#{mbCursos.cursosGet()}"/>
+        </h:form>
+    </h:body>
+</html>
+
